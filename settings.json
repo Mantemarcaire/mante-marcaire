@@ -1,0 +1,22 @@
+{
+  "from_email": "info@marcaire.com",
+  "to_email_default": "",
+  "allow_time_edit": true,
+  "signature_enabled": true,
+  "gps_button_mode": "auto",
+  "attachments": {
+    "pdf": true,
+    "png": false
+  },
+  "ui_texts": {
+    "gps_label": "Marcar ubicación",
+    "sign_label": "Firmar",
+    "send_label": "Enviar reporte"
+  },
+  "advanced": {
+    "email_endpoint": "",
+    "pdf_format": "Letter",
+    "pdf_watermark": "",
+    "theme": "light"
+  }
+}

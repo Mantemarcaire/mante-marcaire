@@ -1,0 +1,68 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: 'es'
+site_url: "https://mantenimiento.marcaire.com"
+media_folder: "static/uploads"
+public_folder: "/uploads"
+
+publish_mode: editorial_workflow
+
+collections:
+  - name: "ajustes"
+    label: "Ajustes del sitio"
+    label_singular: "Ajuste"
+    description: "Parámetros del formulario de mantenimiento y opciones generales."
+    files:
+      - file: "data/settings.json"
+        label: "Parámetros del formulario"
+        name: "settings"
+        fields:
+          - { label: "Correo remitente (from)", name: "from_email", widget: "string", required: true, hint: "Ej: info@marcaire.com" }
+          - { label: "Correo(s) destino por defecto (to)", name: "to_email_default", widget: "string", required: false, hint: "Separar por comas si son varios" }
+          - { label: "Permitir editar hora manualmente", name: "allow_time_edit", widget: "boolean", default: true }
+          - { label: "Habilitar firma con el dedo", name: "signature_enabled", widget: "boolean", default: true }
+          - label: "Modo botón GPS"
+            name: "gps_button_mode"
+            widget: "select"
+            options:
+              - { label: "Automático (detecta iOS/Android)", value: "auto" }
+              - { label: "Google Maps", value: "google" }
+              - { label: "Apple Maps", value: "apple" }
+              - { label: "Ambos (muestra dos botones)", value: "both" }
+            default: "auto"
+          - label: "Adjuntos en correo"
+            name: "attachments"
+            widget: "object"
+            fields:
+              - { label: "Adjuntar PDF", name: "pdf", widget: "boolean", default: true }
+              - { label: "Adjuntar PNG", name: "png", widget: "boolean", default: false }
+          - label: "Textos UI"
+            name: "ui_texts"
+            widget: "object"
+            fields:
+              - { label: "Etiqueta botón GPS", name: "gps_label", widget: "string", default: "Marcar ubicación" }
+              - { label: "Etiqueta botón Firma", name: "sign_label", widget: "string", default: "Firmar" }
+              - { label: "Etiqueta Enviar", name: "send_label", widget: "string", default: "Enviar reporte" }
+          - label: "Avanzado"
+            name: "advanced"
+            widget: "object"
+            fields:
+              - { label: "Endpoint correo (serverless / API)", name: "email_endpoint", widget: "string", required: false, hint: "Si usás función de Netlify o servicio externo" }
+              - { label: "Formato del PDF", name: "pdf_format", widget: "select", options: ["A4","Letter"], default: "Letter" }
+              - { label: "Marca de agua en PDF", name: "pdf_watermark", widget: "string", required: false }
+              - { label: "Tema UI", name: "theme", widget: "select", options: ["light","dark"], default: "light" }
+
+  - name: "contenido"
+    label: "Contenido del Formulario"
+    description: "Textos descriptivos, ayuda, títulos y pie de página del formulario."
+    files:
+      - file: "data/form_texts.json"
+        label: "Textos del Formulario"
+        name: "form_texts"
+        fields:
+          - { label: "Título principal", name: "title", widget: "string", default: "Reporte de mantenimiento" }
+          - { label: "Descripción", name: "description", widget: "text", default: "Complete los campos y adjunte la firma." }
+          - { label: "Pie de página", name: "footer", widget: "string", default: "MARCAIRE — Mantenimiento" }
+          - { label: "Aviso legal", name: "legal", widget: "text", required: false }
