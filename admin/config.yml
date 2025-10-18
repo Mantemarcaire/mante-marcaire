@@ -1,0 +1,32 @@
+backend:
+name: git-gateway 
+branch: main 
+
+media_folder: "uploads" 
+public_folder: "/uploads" 
+
+site_url: https://mantenimiento.marcaire.com 
+display_url: https://mantenimiento.marcaire.com 
+
+collections: 
+- name: "ajustes" 
+  label: "Ajustes del Sitio" 
+  files: 
+    - file: "data/settings.json" 
+      label: "Configuración General" 
+      name: "settings" 
+      fields:
+        - { label: "Correo remitente", name: "correo", widget: "string", default: "info@marcaire.com" } 
+        - { label: "Habilitar Firma Digital", name: "firma", widget: "boolean", default: true } 
+        - { label: "Adjuntar PDF o PNG", name: "adjunto", widget: "boolean", default: true } 
+        - { label: "Botones GPS Android/iOS", name: "gps", widget: "boolean", default: true } 
+- name: "formulario" 
+  label: "Contenido del Formulario" 
+  files:
+    - file: "data/form_texts.json" 
+      label: "Textos del Formulario" 
+      name: "form_texts" 
+      fields:
+        - { label: "Título principal", name: "titulo", widget: "string", default: "Reporte de Mantenimiento" } 
+        - { label: "Descripción", name: "descripcion", widget: "text", default: "Completar los datos del servicio realizado y adjuntar fotografías si es necesario." } 
+        - { label: "Texto de botón Enviar", name: "boton_enviar", widget: "string", default: "Enviar Reporte" }
